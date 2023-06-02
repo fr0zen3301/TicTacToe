@@ -12,7 +12,7 @@ void init_matrix(void)
         for(j=0; j<3; j++) matrix[i][j] =  ' ';
 }
 
-// player turn
+// player1 turn
 void Player1(void)
 {
     int x, y;
@@ -29,6 +29,7 @@ void Player1(void)
     else
         matrix[x][y] = 'X';
 }
+// player2 turn
 void Player2(void)
 {
     int i, j;
@@ -52,7 +53,7 @@ void Player2(void)
         matrix[i][j] = 'O';
 
 }
-
+// Board Display
 void DisplayBoard(void)
 {
   int t;
@@ -65,26 +66,26 @@ void DisplayBoard(void)
   printf("\n");
 }
 
-
+// check function
 char check(void)
 {
     int i;
 
-    // 컬럼 확인
+    // check column
     for (i=0; i<3; i++)
     {
         if (matrix[0][i]==matrix[1][i] && matrix[0][i]==matrix[2][i])
             return matrix[0][i];
     }
 
-    // 열 확인
+    // check raw
     for(i=0; i<3; i++)
     {
         if(matrix[i][0]==matrix[i][1] && matrix[i][0]==matrix[i][2])
             return matrix[i][0];
     }
 
-    // diagonals 확인
+    // check diagonals
     if(matrix[0][0]==matrix[1][1] && matrix[1][1]==matrix[2][2])
        return matrix[0][0];
 
@@ -107,7 +108,7 @@ int main()
     {
         DisplayBoard();
         Player1();
-        // 바로 확인
+        // check immediately 
         end = check();
         if (end!= ' ')
             break;
